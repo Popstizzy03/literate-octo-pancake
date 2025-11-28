@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+
+// Fetch featured projects from the Content Collection
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+  .filter(project => project.data.featured)
+  .sort((a, b) => a.data.sortOrder - b.data.sortOrder);
+---
+
+<!-- WORK SECTION -->
+<section id="work" class="mb-32">
+  <div class="flex items-end justify-between mb-12 border-b border-[var(--color-border)] pb-4">
+    <h2 class="text-4xl font-bold">Featured Sessions</h2>
+    <a href="/work" class="hidden md:inline-block text-[var(--color-signal)] hover:text-white transition-colors">View All Archive -></a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {featuredProjects.map((project) => (
+      <article class="group cursor-pointer">
+        <!-- The 'glass-panel' utility creates that deep, glossy look -->
+        <div class="glass-panel h-64 rounded-sm mb-4 relative overflow-hidden transition-transform duration-500 group-hover:-translate-y-1">
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80"></div>
+          
+          <!-- Play Button Overlay -->
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+             <button class="w-16 h-16 rounded-full bg-[var(--color-signal)] text-black flex items-center justify-center shadow-[0_0_30px_rgba(202,138,4,0.4)]">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 ml-1">
+                  <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" />
+                </svg>
+             </button>
+          </div>
+        </div>
+
+        <div>
+           <span class="font-mono text-xs text-[var(--color-signal)] uppercase tracking-wider">{project.data.category}</span>
+           <h3 class="text-xl font-bold text-[var(--color-ink-primary)] mt-1 group-hover:text-[var(--color-signal)] transition-colors">{project.data.title}</h3>
+           <p class="text-sm text-[var(--color-ink-secondary)] mt-2 line-clamp-2">{project.data.description}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

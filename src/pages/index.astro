@@ -1,0 +1,19 @@
+---
+import BlueNoteLayout from '../layouts/BlueNoteLayout.astro';
+import Hero from '../components/ui/Hero.astro';
+import Bio from '../components/ui/Bio.astro';
+import Work from '../components/ui/Work.astro';
+import VimeoCarousel from '../components/media/VimeoCarousel.svelte';
+---
+
+<BlueNoteLayout title="Home">
+  
+  <Hero />
+
+  <Bio />
+
+  <Work />
+
+  <VimeoCarousel client:visible />
+  
+</BlueNoteLayout>

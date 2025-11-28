@@ -1,0 +1,22 @@
+{
+  "name": "literate-octo-pancake",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.12",
+    "@astrojs/svelte": "^7.2.2",
+    "@astrojs/vercel": "^9.0.1",
+    "@tailwindcss/vite": "^4.1.17",
+    "astro": "^5.15.8",
+    "marked": "^17.0.1",
+    "svelte": "^5.44.0",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3"
+  }
+}

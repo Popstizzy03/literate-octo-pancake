@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/* THEME: THE BLUE NOTE 
+   A palette inspired by late-night jazz clubs, 
+   tobacco smoke, brass instruments, and deep velvet curtains.
+*/
+
+@theme {
+  /* The "Brass" Section - Warmth */
+  --color-brass-dim: #854d0e;
+  --color-brass-base: #ca8a04;
+  --color-brass-bright: #facc15;
+  
+  /* The "Blues" Section - Coolness */
+  --color-midnight-900: #020617; /* Slate 950 - deeply blue black */
+  --color-midnight-800: #0f172a; /* Slate 900 */
+  --color-electric-blue: #3b82f6; /* A sharp contrast blue */
+  
+  /* The "Stage" Section - Neutrals */
+  --color-stage-black: #050505;
+  --color-mic-grill: #27272a;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* BACKGROUNDS */
+  --color-bg-main: var(--color-midnight-900);
+  --color-bg-panel: rgba(15, 23, 42, 0.6); /* Glassy midnight */
+  
+  /* TEXT */
+  --color-ink-primary: #e2e8f0; /* Cool white (Slate 200) */
+  --color-ink-secondary: #94a3b8; /* Muted cool gray (Slate 400) */
+  
+  /* ACCENTS */
+  --color-signal: var(--color-brass-base); /* Default action color */
+  --color-signal-glow: var(--color-brass-bright);
+  
+  /* BORDERS - The "Metallic" Edge */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-highlight: rgba(255, 255, 255, 0.15);
+}
+
+/* BASE SETTINGS */
+body {
+  background-color: var(--color-bg-main);
+  color: var(--color-ink-primary);
+  font-feature-settings: "ss01", "liga" 1; /* Tech + Ligatures */
+  /* This ensures the scrollbar doesn't jump */
+  overflow-x: hidden;
+}
+
+/* TEXTURE: "The Vinyl Grain" 
+   This adds that analog feel to the digital screen 
+*/
+.vinyl-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* TYPOGRAPHY OVERRIDES */
+.prose h1, .prose h2 {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.04em; /* Tighter, more modern */
+  background: linear-gradient(to bottom right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.prose p {
+  font-family: 'Lora', serif;
+  color: var(--color-ink-secondary);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* UTILITIES */
+
+/* Glass panel with a blue tint */
+@utility glass-panel {
+  background: var(--color-bg-panel);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid var(--color-border);
+}
+
+/* A border that looks like light hitting a cymbal edge */
+@utility metallic-rim {
+  border: 1px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  /* Double gradient trick for borders */
+  background-image: linear-gradient(var(--color-bg-main), var(--color-bg-main)), 
+                    linear-gradient(to bottom, var(--color-border-highlight), var(--color-border));
+}
+
+/* The active state for navigation */
+@utility nav-active {
+  color: var(--color-ink-primary);
+  background: linear-gradient(90deg, rgba(202, 138, 4, 0.1) 0%, transparent 100%);
+  border-left: 2px solid var(--color-brass-base);
+}
