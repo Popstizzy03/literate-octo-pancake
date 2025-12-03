@@ -10,6 +10,7 @@ const projectsCollection = defineCollection({
     featured: z.boolean().default(false),
     sortOrder: z.number().default(100),
     coverImage: z.string().optional(), // URL or path to image
+    jingle: z.string().optional(),
   }),
 });
 
