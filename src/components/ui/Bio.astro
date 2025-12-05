@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import NathanImage from '../../assets/images/Nathan.png';
 ---
 <!-- ABOUT / BIO SECTION -->
 <section id="about" class="mb-32 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -7,11 +9,12 @@
     <div class="aspect-[4/5] w-full object-cover rounded-sm bg-zinc-800 metallic-rim relative overflow-hidden">
        <!-- Placeholder for Nathan's Image -->
        <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-main)] to-transparent opacity-90"></div>
-       <img 
-         src="/Nathan.png" 
+       <Image 
+         src={NathanImage} 
          alt="Studio Mic" 
          class="w-full h-full object-cover opacity-100"
-         loading="lazy" 
+         widths={[300, 600, 900]}
+         sizes="(max-width: 768px) 100vw, 50vw"
        />
     </div>
     <!-- Decorative offset box -->

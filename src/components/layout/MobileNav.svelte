@@ -4,7 +4,7 @@
 
   const links = [
     { name: 'Home', href: '/' },
-
+    { name: 'Works', href: '/work' },
   ];
 </script>
 

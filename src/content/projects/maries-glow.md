@@ -6,5 +6,5 @@ description: "Bright, confident, and rhythmic audio branding for a modern cosmet
 featured: true
 sortOrder: 2
 jingle: /mp3/jingle2.mp3
-coverImage: /mariesglow.png
+coverImage: ../../assets/images/mariesglow.png
 ---
